@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .courses-table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">All Courses</h1>
+        
+        <div class="courses-table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Title</th>
+                        <th>Description</th>
+                        <th>Instructor Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course, instructor_name in courses %}
+                    <tr>
+                        <td>{{ course.CourseID }}</td>
+                        <td>{{ course.Title }}</td>
+                        <td>{{ course.Description }}</td>
+                        <td>{{ instructor_name }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">No courses available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Optional: Include scripts for Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Grade Students</h1>
+
+        <h2>Course: {{ course_id }}</h2>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="students">Select Student:</label>
+                <select class="form-control" id="students" name="enrollment_id">
+                    <option value="">-- Choose a student --</option>
+                    {% for enrollment, student_name in enrollments %}
+                    <option value="{{ enrollment.EnrollmentID }}">{{ student_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="text" class="form-control" id="grade" name="grade" required>
+            </div>
+            <button type="submit" name="assign_grade" class="btn btn-primary">Assign Grade</button>
+            <a href="{{ url_for('instructor_dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in a Course</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .course-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Enroll in a New Course</h1>
+
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-info">
+                    {% for category, message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Enroll in a Course -->
+        <form method="post" action="{{ url_for('enroll_course') }}">
+            <div class="form-group">
+                <label for="course_id">Select Course:</label>
+                <select name="course_id" id="course_id" class="form-control">
+                    {% for course, instructor in courses %}
+                        <option value="{{ course.CourseID }}">
+                            {{ course.Title }} --- Instructor: {{ instructor.UserName }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enroll</button>
+        </form>
+    </div>
+</body>
+</html>

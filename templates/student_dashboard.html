@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .dashboard-options {
+            margin-top: 20px;
+        }
+        .dashboard-options .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Stucdent Dashboard</h1>
+        
+        <!-- Welcome Message -->
+        <div class="text-center">
+            <p>Welcome, Student!</p>
+            <p>User ID: {{ user_id }}</p>
+        </div>
+        
+        <!-- Dashboard Options -->
+        <div class="dashboard-options text-center">
+            <form method="post" action="{{ url_for('student_dashboard') }}">
+                <button type="submit" name="enroll_course" class="btn btn-primary">Enroll in a New Course</button>
+                <button type="submit" name="view_courses" class="btn btn-secondary">View Enrolled Courses</button>
+                <button type="submit" name="edit_profile" class="btn btn-info">Edit Profile</button>
+                <button type="submit" name="logout" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+        
+        <!-- Optional: Include scripts for Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>
